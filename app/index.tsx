@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView,
+} from "react-native";
 
 const mainImages = [
   "https://placekitten.com/200/200",
@@ -38,19 +45,12 @@ export default function GridGallery() {
     setImages((prev) =>
       prev.map((item, i) => {
         if (i === index) {
-          if (!item.isAlt) {
-            return {
-              ...item,
-              isAlt: true,
-              scale: Math.min(item.scale + 0.2, 2.0),
-            };
-          } else {
-            return {
-              ...item,
-              isAlt: false,
-              scale: 1.0,
-            };
-          }
+          const newScale = Math.min(item.scale + 0.2, 2.0);
+          return {
+            ...item,
+            isAlt: !item.isAlt,
+            scale: newScale,
+          };
         }
         return item;
       })
@@ -59,19 +59,17 @@ export default function GridGallery() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-        <Text style={{
-        fontSize: 16,
-        marginBottom: 16,
-        textAlign: "center",
-        color: "#666",
-        fontFamily: "MySoul-Regular",
-      }}>
-          NAMA MUHAMMAD HASRADDIN HASNAN
-          NIM 105841107722
-        </Text>
+      {/* Nama */}
+      <View style={styles.nameBox}>
+        <Text style={styles.nameText}>MUHAMMAD HASRADDIN HASNAN</Text>
+      </View>
 
+      {/* NIM */}
+      <View style={styles.nimBox}>
+        <Text style={styles.nimText}>105841107722</Text>
+      </View>
 
-      {/* Grid Gambar */}
+      {/* Grid */}
       <View style={styles.grid}>
         {images.map((item, index) => (
           <TouchableOpacity
@@ -101,43 +99,31 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   nameBox: {
-    backgroundColor: "gray",
-    paddingVertical: 15,
+    backgroundColor: "#444",
     paddingHorizontal: 30,
-    borderRadius: 5,
+    paddingVertical: 10,
+    borderRadius: 10,
     marginBottom: 10,
-    elevation: 4,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
   },
   nameText: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "white",
-    letterSpacing: 1,
+    color: "#fff",
+    fontFamily: "sans-serif",
     textAlign: "center",
   },
   nimBox: {
-    backgroundColor: "#3A4750",
-    width: 240,
-    height: 50,
+    backgroundColor: "#2E86C1",
+    paddingHorizontal: 25,
+    paddingVertical: 10,
     borderRadius: 25,
-    justifyContent: "center",
-    alignItems: "center",
     marginBottom: 20,
-    elevation: 4,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
   },
   nimText: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#FFFFFF",
-    letterSpacing: 1,
+    fontSize: 18,
+    color: "#fff",
+    fontWeight: "600",
+    fontFamily: "sans-serif-medium",
   },
   grid: {
     flexDirection: "row",
