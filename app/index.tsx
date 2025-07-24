@@ -1,141 +1,75 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-  ScrollView,
-} from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
-const mainImages = [
-  "https://placekitten.com/200/200",
-  "https://placebear.com/200/200",
-  "https://placebeard.it/200x200",
-  "https://baconmockup.com/200/200",
-  "https://placekitten.com/201/200",
-  "https://placebear.com/201/200",
-  "https://placebeard.it/201x200",
-  "https://baconmockup.com/201/200",
-  "https://placekitten.com/202/200",
+const names = [
+  "hasraddin", "ahmad", "zulfikar", "yogi", "rosfika", "fikri maulana", "tegar", "afifah",
+  "nur fadillah", "farel apta indratama",
 ];
 
-const altImages = [
-  "https://placekitten.com/300/300",
-  "https://placebear.com/300/300",
-  "https://placebeard.it/300x300",
-  "https://baconmockup.com/300/300",
-  "https://placekitten.com/301/300",
-  "https://placebear.com/301/300",
-  "https://placebeard.it/301x300",
-  "https://baconmockup.com/301/300",
-  "https://placekitten.com/302/300",
+const nims = [
+  "105841107722", "105841107922", "105841107822", "105841108122", "105841108022", "105841107622", "105841110722", "105841111022",
+  "105841110422", "105841109422"
 ];
 
-export default function GridGallery() {
-  const [images, setImages] = useState(
-    mainImages.map((uri, index) => ({
-      id: index,
-      isAlt: false,
-      scale: 1.0,
-    }))
-  );
+const fontList = [
+  "BitcountPropSingle_roman-regulerr",
+  "NotoSansJP-Regularr",
+  "PlaywriteHU-Regular",
+  "IntelOneMono-Regular",
+  "SpecialGothicExpandedOne-Regular",
+  "WinkyRough-Regular",
+  "NotoSansKR-Regular",
+  "PlaywritePL-Regular",
+  "Inconsolata_ExtraExpanded-Regular",
+  "BebasNeue-Regular"
+];
 
-  const handlePress = (index: number) => {
-    setImages((prev) =>
-      prev.map((item, i) => {
-        if (i === index) {
-          const newScale = Math.min(item.scale + 0.2, 2.0);
-          return {
-            ...item,
-            isAlt: !item.isAlt,
-            scale: newScale,
-          };
-        }
-        return item;
-      })
-    );
-  };
+const totalNames = names.length;
+
+export default function HomeScreen() {
+  const stambukIndex = 3; // Misalnya stambuk ke-3 (index 3 = "Deni")
+  const before = [];
+  const after = [];
+
+  for (let i = 1; i <= 5; i++) {
+    before.push((stambukIndex - i + totalNames) % totalNames);
+    after.push((stambukIndex + i) % totalNames);
+  }
+
+  const finalIndexes = [...before.reverse(), ...after];
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {/* Nama */}
-      <View style={styles.nameBox}>
-        <Text style={styles.nameText}>MUHAMMAD HASRADDIN HASNAN</Text>
-      </View>
-
-      {/* NIM */}
-      <View style={styles.nimBox}>
-        <Text style={styles.nimText}>105841107722</Text>
-      </View>
-
-      {/* Grid */}
-      <View style={styles.grid}>
-        {images.map((item, index) => (
-          <TouchableOpacity
-            key={index}
-            onPress={() => handlePress(index)}
-            activeOpacity={0.8}
-          >
-            <Image
-              source={{
-                uri: item.isAlt ? altImages[index] : mainImages[index],
-              }}
-              style={[
-                styles.image,
-                { transform: [{ scale: item.scale }] },
-              ]}
-            />
-          </TouchableOpacity>
-        ))}
-      </View>
-    </ScrollView>
+    <View style={styles.container}>
+      {finalIndexes.map((index, i) => (
+        <View key={i} style={styles.item}>
+          <Text style={[styles.name, { fontFamily: fontList[i] }]}>
+            {names[index]}
+          </Text>
+          <Text style={[styles.nim, { fontFamily: fontList[i] }]}>
+            {nims[index]}
+          </Text>
+        </View>
+      ))}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 20,
+    flex: 1,
+    paddingTop: 60,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  item: {
+    marginVertical: 8,
     alignItems: "center",
   },
-  nameBox: {
-    backgroundColor: "#444",
-    paddingHorizontal: 30,
-    paddingVertical: 10,
-    borderRadius: 10,
-    marginBottom: 10,
+  name: {
+    fontSize: 26,
   },
-  nameText: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#fff",
-    fontFamily: "sans-serif",
-    textAlign: "center",
-  },
-  nimBox: {
-    backgroundColor: "#2E86C1",
-    paddingHorizontal: 25,
-    paddingVertical: 10,
-    borderRadius: 25,
-    marginBottom: 20,
-  },
-  nimText: {
-    fontSize: 18,
-    color: "#fff",
-    fontWeight: "600",
-    fontFamily: "sans-serif-medium",
-  },
-  grid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    gap: 10,
-  },
-  image: {
-    width: 100,
-    height: 100,
-    margin: 5,
-    borderRadius: 10,
-    backgroundColor: "#eee",
+  nim: {
+    fontSize: 16,
+    color: "#555",
   },
 });
