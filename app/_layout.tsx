@@ -7,16 +7,16 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded] = useFonts({
-    "BitcountPropSingle_roman-reguler": require("../assets/fonts/BitcountPropSingle_Roman-Regular.ttf"),
-    "NotoSansJP-Regular": require("../assets/fonts/NotoSansJP-Regular.ttf"),
-    "PlaywriteHU-Regular": require("../assets/fonts/PlaywriteHU-Regular.ttf"),
-    "IntelOneMono-Regular": require("../assets/fonts/IntelOneMono-Regular.ttf"),
+    "WinkyRough-VariableFont_wght": require("../assets/fonts/WinkyRough-VariableFont_wght.ttf"),
+    "IntelOneMono-VariableFont_wght": require("../assets/fonts/IntelOneMono-VariableFont_wght.ttf"),
+    "PlaywriteHU-VariableFont_wght": require("../assets/fonts/PlaywriteHU-VariableFont_wght.ttf"),
+    "PlaywritePL-VariableFont_wght": require("../assets/fonts/PlaywritePL-VariableFont_wght.ttf"),
+    "RobotoMono-VariableFont_wght": require("../assets/fonts/RobotoMono-VariableFont_wght.ttf"),
+    "Goldman-Bold": require("../assets/fonts/Goldman-Bold.ttf"),
     "SpecialGothicExpandedOne-Regular": require("../assets/fonts/SpecialGothicExpandedOne-Regular.ttf"),
-    "WinkyRough-Regular": require("../assets/fonts/WinkyRough-Regular.ttf"),
-    "NotoSansKR-Regular": require("../assets/fonts/NotoSansKR-Regular.ttf"),
-    "PlaywritePL-Regular": require("../assets/fonts/PlaywritePL-Regular.ttf"),
-    "Inconsolata_ExtraExpanded-Regular": require("../assets/fonts/Inconsolata_ExtraExpanded-Regular.ttf"),
     "BebasNeue-Regular": require("../assets/fonts/BebasNeue-Regular.ttf"),
+    "Triodion-Regular": require("../assets/fonts/Triodion-Regular.ttf"),
+    "FjallaOne-Regular": require("../assets/fonts/FjallaOne-Regular.ttf"),
   });
 
   useEffect(() => {

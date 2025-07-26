@@ -1,32 +1,32 @@
 import { View, Text, StyleSheet } from "react-native";
 
 const names = [
-  "hasraddin", "ahmad", "zulfikar", "yogi", "rosfika", "fikri maulana", "tegar", "afifah",
-  "nur fadillah", "farel apta indratama",
+  "Rayhanatul jannah", "Hanna Maryam", "Afifah Aulia", "MUH FIKRIR MAULANA", "MUHAMMAD HASRADDIN HASNAN", "Muhammad Dzulfikar Hidayat", 
+  "AHMAD YANI", "Rosfika Awalia", "YOGI A.AMMAH", "Usran",
 ];
 
 const nims = [
-  "105841107722", "105841107922", "105841107822", "105841108122", "105841108022", "105841107622", "105841110722", "105841111022",
-  "105841110422", "105841109422"
+  "105841110822", "105841110922", "105841111022", "105841107622", "105841107722", "105841107822", "105841107922", "105841108122",
+  "105841108222", "105841108722"
 ];
 
 const fontList = [
-  "BitcountPropSingle_roman-regulerr",
-  "NotoSansJP-Regularr",
-  "PlaywriteHU-Regular",
-  "IntelOneMono-Regular",
+  "BitcountPropSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght",
+  "IntelOneMono-VariableFont_wght",
+  "PlaywriteHU-VariableFont_wght",
+  "PlaywritePL-VariableFont_wght",
+  "RobotoMono-VariableFont_wght",
+  "Goldman-Bold",
   "SpecialGothicExpandedOne-Regular",
-  "WinkyRough-Regular",
-  "NotoSansKR-Regular",
-  "PlaywritePL-Regular",
-  "Inconsolata_ExtraExpanded-Regular",
-  "BebasNeue-Regular"
+  "BebasNeue-Regular",
+  "Triodion-Regular",
+  "FjallaOne-Regular"
 ];
 
 const totalNames = names.length;
 
 export default function HomeScreen() {
-  const stambukIndex = 3; // Misalnya stambuk ke-3 (index 3 = "Deni")
+  const stambukIndex = 3; // Misalnya stambuk ke-3 (index 3 = "yogi")
   const before = [];
   const after = [];
 
@@ -63,10 +63,13 @@ const styles = StyleSheet.create({
   },
   item: {
     marginVertical: 8,
+    flexDirection: "row", // Tampilkan horizontal
     alignItems: "center",
+    gap: 12, // Jarak antara nama dan NIM
   },
   name: {
     fontSize: 26,
+    marginRight: 10,
   },
   nim: {
     fontSize: 16,
