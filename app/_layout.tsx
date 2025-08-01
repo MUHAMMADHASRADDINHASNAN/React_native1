@@ -1,27 +1,12 @@
-// Layout.js
+import { Tabs } from 'expo-router'; // Import komponen Tabs dari expo-router
 
-import { Slot } from 'expo-router';
-import { View, StyleSheet, Text } from 'react-native';
-
+// Komponen utama layout untuk tab navigasi
 export default function Layout() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>10 Ikon Berbeda</Text>
-      <Slot />
-    </View>
+    // Tabs akan membuat navigasi tab bar di bawah
+    <Tabs>
+      {/* Gunakan grup (tabs) sebagai layout utama dan sembunyikan header bawaan */}
+      <Tabs.Screen name="(tabs)" options={{ headerShown: false }} />
+    </Tabs>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 60,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-});
